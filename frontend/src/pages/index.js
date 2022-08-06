@@ -1,9 +1,13 @@
+import { NavSup } from "../components/navsup";
 
 
 export default function Home() {
   return (
-    <div>
-      <h1>Testando</h1>
-    </div>
+    <>
+      <NavSup/>
+      <div>
+        <h1>Testando</h1>
+      </div>
+    </>
   )
 }

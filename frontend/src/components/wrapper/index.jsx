@@ -1,11 +1,11 @@
-import { Nav } from '../nav'
 import { Menu } from '../menu'
+import { NavSup } from '../navsup'
 
 export function Wrapper(props) {
   
     return (
       <>
-        <Nav />
+        <NavSup />
           <div className="container-fluid">
            <div className="row">
              <Menu/>
