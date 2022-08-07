@@ -5,6 +5,7 @@ import logoImg from '../../../public/vendas.svg';
 import { useState, useContext } from 'react'
 import Head from 'next/head';
 import { AuthContext } from '../../contexts/AuthContext'
+import { toast } from 'react-toastify'
 
 
 export default function SignUp() {
@@ -20,7 +21,7 @@ export default function SignUp() {
       event.preventDefault();
   
       if(name === '' || email === '' || password === ''){
-        alert("PREENCHA TODOS OS CAMPOS")
+        toast.error("Preencha todos os campos")
         return;
       }
   

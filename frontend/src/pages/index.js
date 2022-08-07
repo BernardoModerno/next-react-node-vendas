@@ -5,6 +5,7 @@ import logoImg from '../../public/vendas.svg';
 import { Container, Form } from 'react-bootstrap';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../contexts/AuthContext'
+import { toast } from 'react-toastify'
 
 export default function Home() {
 
@@ -19,7 +20,7 @@ export default function Home() {
     event.preventDefault();
 
     if(email === '' || password === ''){
-      alert("PREENCHA OS DADOS")
+      toast.error("Preencha os campos")
       return;
     }
 
