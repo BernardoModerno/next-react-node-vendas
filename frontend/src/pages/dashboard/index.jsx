@@ -1,3 +1,4 @@
+import { canSSRAuth } from '../../utils/canSSRAuth'
 import { Wrapper } from '../../components/wrapper'
 
 export default function Dashboard(){
@@ -10,3 +11,10 @@ export default function Dashboard(){
   
 
 }
+
+export const getServerSideProps = canSSRAuth(async (ctx) => {
+
+  return {
+    props: {}
+  }
+}) 
