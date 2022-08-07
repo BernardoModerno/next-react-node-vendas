@@ -6,6 +6,7 @@ import { Container, Form } from 'react-bootstrap';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../contexts/AuthContext'
 import { toast } from 'react-toastify'
+import { canSSRGuest } from '../utils/canSSRGuest'
 
 export default function Home() {
 
@@ -67,3 +68,10 @@ export default function Home() {
        </>
     )
 }
+
+export const getServerSideProps = canSSRGuest(async (ctx) => {
+
+  return {
+    props: {}
+  }
+})
