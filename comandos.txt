@@ -21,3 +21,5 @@ yarn add @types/multer -D
 npx create-next-app frontend
 yarn dev
 yarn add bootstrap
+yarn add react-icons
+yarn add axios nookies jwt-decode
