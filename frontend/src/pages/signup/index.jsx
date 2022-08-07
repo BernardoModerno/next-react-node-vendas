@@ -2,11 +2,13 @@ import { Container } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import Image from 'next/image';
 import logoImg from '../../../public/vendas.svg';
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import Head from 'next/head';
+import { AuthContext } from '../../contexts/AuthContext'
 
 
 export default function SignUp() {
+    const { signUp } = useContext(AuthContext);
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -23,6 +25,16 @@ export default function SignUp() {
       }
   
       setLoading(true);
+
+      let data = {
+        name,
+        email,
+        password
+      }
+  
+      await signUp(data)
+  
+      setLoading(false);
   
     }
 

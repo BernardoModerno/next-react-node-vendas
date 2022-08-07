@@ -51,8 +51,26 @@ export function AuthProvider({ children }){
       }
   }
 
+  async function signUp({ name, email, password}){
+    try{
+
+      const response = await api.post('/users', {
+        name,
+        email,
+        password
+      })
+
+      console.log("CADASTRADO COM SUCESSO!")
+
+      Router.push('/')
+
+    }catch(err){
+      console.log("erro ao cadastrar ", err)
+    }
+  }
+
   return(
-    <AuthContext.Provider value={{ user, isAuthenticated, signIn, signOut }}>
+    <AuthContext.Provider value={{ user, isAuthenticated, signIn, signOut, signUp }}>
       {children}
     </AuthContext.Provider>
   )
