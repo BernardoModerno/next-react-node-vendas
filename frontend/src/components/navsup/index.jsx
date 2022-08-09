@@ -7,7 +7,7 @@ export function NavSup () {
       <Navbar bg='dark' expand='lg' variant='dark'>
           <Container>
               <Navbar.Brand as={Link} href='/' className="nav-link text-light">
-                <a className='text-white-50 px-2'>Vendas</a>
+                <a className='text-white-50 px-2 text-decoration-none'>Vendas</a>
               </Navbar.Brand>
               <Navbar.Toggle aria-controls='basic-navbar-nav' />
               <Navbar.Collapse id='basic-navbar-nav'>
@@ -25,6 +25,13 @@ export function NavSup () {
                           href='/products'
                       >
                           <a className="nav-link">Produtos</a>
+                      </Nav.Link>
+                      <Nav.Link
+                          className="nav-link"
+                          as={Link}
+                          href='/category'
+                      >
+                          <a className="nav-link">Categorias</a>
                       </Nav.Link>
                   </Nav>
                   <Nav>
