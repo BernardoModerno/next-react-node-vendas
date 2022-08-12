@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import  Head  from 'next/head';
+import Head from 'next/head';
 import { canSSRAuth } from '../../utils/canSSRAuth'
 import { Button, Container, Form } from 'react-bootstrap';
 import Link from 'next/link';

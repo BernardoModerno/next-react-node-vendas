@@ -1,6 +1,7 @@
 import React from 'react'
 import { canSSRAuth } from '../../utils/canSSRAuth'
 import { useState } from 'react'
+import { useRouter } from "next/router";
 import Link from 'next/link'
 import Head from "next/head"
 import { Button, FormControl, InputGroup } from 'react-bootstrap';
@@ -8,7 +9,7 @@ import { Wrapper } from '../../components/wrapper';
 import { setupAPIClient } from '../../services/api'
 
 export default  function Category({categorys}) {
-
+  const router = useRouter();
   const [termoBusca, setTermoBusca] = useState('');
   const [categoryList, setCategoryList] = useState(categorys || []);
 
@@ -63,11 +64,12 @@ export default  function Category({categorys}) {
                             <td>{categoria.name}</td>
                             <td>
                                 <div>
-                                    <button
-                                        className='btn btn-sm btn-outline-primary me-2'
-                                    >
-                                        Editar
-                                    </button>
+                                       <Button
+                                           variant='btn btn-sm btn-outline-primary me-2'
+                                           onClick={() => router.push("category/editCategory/" + categoria.id)}
+                                       >
+                                           Editar
+                                       </Button>
                                     <button className='btn btn-sm btn-outline-danger me-2'>
                                         Excluir
                                     </button>

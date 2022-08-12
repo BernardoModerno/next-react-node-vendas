@@ -26,6 +26,7 @@ import { EditCategoryController } from './controllers/category/EditCategoryContr
 import { isAuthenticated } from './middlewares/isAuthenticated'
 
 import uploadConfig from './config/multer'
+import { ListByIdCategoryController } from './controllers/category/ListByIdCategoryController';
 
 
 const router = Router();
@@ -43,6 +44,8 @@ router.get('/me', isAuthenticated,  new DetailuserController().handle )
 router.post('/category', isAuthenticated, new CreateCategoryController().handle )
 
 router.get('/category', isAuthenticated, new ListCategoryController().handle )
+
+router.get('/category/:id', isAuthenticated, new ListByIdCategoryController().handle ) 
 
 router.put('/category/:id', isAuthenticated, new EditCategoryController().handle ) 
 
