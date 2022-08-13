@@ -27,6 +27,7 @@ import { isAuthenticated } from './middlewares/isAuthenticated'
 
 import uploadConfig from './config/multer'
 import { ListByIdCategoryController } from './controllers/category/ListByIdCategoryController';
+import { DeleteCategoryController } from './controllers/category/DeleteCategoryController';
 
 
 const router = Router();
@@ -42,6 +43,8 @@ router.get('/me', isAuthenticated,  new DetailuserController().handle )
 
 //-- ROTAS CATEGORY
 router.post('/category', isAuthenticated, new CreateCategoryController().handle )
+
+router.delete('/category/:id', isAuthenticated, new DeleteCategoryController().handle )
 
 router.get('/category', isAuthenticated, new ListCategoryController().handle )
 
