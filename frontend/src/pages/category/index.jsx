@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { canSSRAuth } from '../../utils/canSSRAuth'
 import { useState } from 'react'
 import { useRouter } from "next/router";
@@ -8,19 +8,33 @@ import { Button, FormControl, InputGroup } from 'react-bootstrap';
 import { Wrapper } from '../../components/wrapper';
 import { setupAPIClient } from '../../services/api'
 
-export default  function Category({categorys}) {
+export default  function Category() {
+
   const router = useRouter();
   const [termoBusca, setTermoBusca] = useState('');
-  const [categoryList, setCategoryList] = useState(categorys || []);
+  const [categoryList, setCategoryList] = useState([]);
+
+  useEffect(() => {
+    async function loadCategories() {
+        const apiClient = setupAPIClient();
+  
+        const response = await apiClient.get('/category');
+
+        /* console.log(data) */
+        setCategoryList(response.data)
+    }
+      
+    loadCategories()
+}, [])
 
 
-  async function handleRefreshCategory(categorys){
-    const apiClient = setupAPIClient();
+  async function del (id) {
+    if (window.confirm('Você realmente deseja excluir essa categoria?')) {
+        const apiClient = setupAPIClient();
+        await apiClient.delete(`category/${id}`);
 
-    const response = await apiClient.get('/category');
-    setCategoryList(response.data);
-    console.log(response.data)
-
+        setCategoryList(categoryList.filter(categoria => categoria.id !== id));
+    }
   }
 
 
@@ -70,9 +84,11 @@ export default  function Category({categorys}) {
                                        >
                                            Editar
                                        </Button>
-                                    <button className='btn btn-sm btn-outline-danger me-2'>
-                                        Excluir
-                                    </button>
+                                       <Button 
+                                           variant='btn btn-sm btn-outline-danger me-2'
+                                           onClick={() => del(categoria.id)}>
+                                           Excluir
+                                       </Button>
                                 </div>
                             </td>
                         </tr>
