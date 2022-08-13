@@ -6,6 +6,7 @@ import { useState, useContext } from 'react'
 import Head from 'next/head';
 import { AuthContext } from '../../contexts/AuthContext'
 import { toast } from 'react-toastify'
+import Link from 'next/link';
 
 
 export default function SignUp() {
@@ -61,8 +62,9 @@ export default function SignUp() {
                   <Form.Control type="password" placeholder="Senha" value={password} onChange={ (e) => setPassword(e.target.value) } />
                 </Form.Group>
               </div>
-              <button className="w-50 btn btn-lg btn-primary" type="submit" loading={loading}>Registrar-se</button>
+              <button className="w-50 btn btn-lg btn-primary mb-2" type="submit" loading={loading}>Registrar-se</button>
             </Form>
+            <Link href='/'>Já tenho cadastro</Link>
           </Container>
         </>
     )

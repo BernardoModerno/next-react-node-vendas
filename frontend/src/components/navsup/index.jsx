@@ -1,8 +1,12 @@
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import Link from 'next/link'
-
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthContext';
 
 export function NavSup () {
+
+    const { signOut } = useContext(AuthContext);
+
     return (
       <Navbar bg='dark' expand='lg' variant='dark'>
           <Container>
@@ -47,7 +51,7 @@ export function NavSup () {
                               Configurações
                           </NavDropdown.Item>
                           <NavDropdown.Divider />
-                          <NavDropdown.Item href='#action/3.4'>
+                          <NavDropdown.Item onClick={signOut}>
                               Sair
                           </NavDropdown.Item>
                       </NavDropdown>
