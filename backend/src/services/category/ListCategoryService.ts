@@ -8,6 +8,7 @@ class ListCategoryService{
         id: true,
         numerounico: true,
         name: true,
+        created_at: true,
       }
     })
 

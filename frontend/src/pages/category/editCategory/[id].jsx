@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Head from 'next/head';
 import { setupAPIClient } from '../../../services/api'
 import { canSSRAuth } from '../../../utils/canSSRAuth'
@@ -11,21 +11,25 @@ import Router from 'next/router';
 
 export default function EditCategory({categorys}){
     const router = useRouter();
-    const paramentro = router.query.id;
+    const parametroApenasParaTeste = router.query.id;
     const [name, setName] = useState('')
-    const [categoryList, setCategoryList] = useState(categorys || []);
+
+    useEffect(() => {
+      async function loadCategories() {
+          const apiClient = setupAPIClient();
+    
+          const response = await apiClient.get(`category/${router.query.id}`);
+          setName(response.data.name)
+  
+      }
+        
+      loadCategories()
+  }, [])
   
     async function handleEdit(event){
       event.preventDefault();
   
-      if(name === ''){
-        return;
-      }
-  
       const apiClient = setupAPIClient();
-      const response = await apiClient.get('/category');
-      setCategoryList(response.data);
-      console.log(response.data)
 
       await apiClient.put(`category/${router.query.id}`, {
         name,
@@ -48,7 +52,7 @@ export default function EditCategory({categorys}){
                      <div className='form-signin w-50 m-auto'>
                        <Form.Group className="mb-3" controlId="nome">
                          <Form.Label>Categoria:</Form.Label>
-                         <Form.Control type='text' placeholder='Digite Nova Categoria:' defaultValue={name} value={name} onChange={ (e) => setName(e.target.value)} />
+                         <Form.Control type='text' defaultValue={name} value={name} onChange={ (e) => setName(e.target.value)} />
                        </Form.Group>
                      </div>
                      <button className="w-50 btn btn-lg btn-outline-success" type="submit">Editar Categoria</button>

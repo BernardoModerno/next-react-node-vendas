@@ -61,6 +61,7 @@ export default  function Category() {
                     <tr>
                         <th scope='col'>NU</th>
                         <th scope='col'>Nome</th>
+                        <th scope='col'>Criação</th>
                         <th scope='col'>Opções</th>
                     </tr>
                 </thead>
@@ -76,6 +77,7 @@ export default  function Category() {
                         <tr key={categoria.id}>
                             <td>{categoria.numerounico}</td>
                             <td>{categoria.name}</td>
+                            <td>{categoria.created_at}</td>
                             <td>
                                 <div>
                                        <Button
