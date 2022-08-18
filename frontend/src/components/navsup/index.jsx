@@ -10,19 +10,12 @@ export function NavSup () {
     return (
       <Navbar bg='dark' expand='lg' variant='dark'>
           <Container>
-              <Navbar.Brand as={Link} href='/' className="nav-link text-light">
+              <Navbar.Brand as={Link} href='/dashboard' className="nav-link text-light">
                 <a className='text-white-50 px-2 text-decoration-none'>Vendas</a>
               </Navbar.Brand>
               <Navbar.Toggle aria-controls='basic-navbar-nav' />
               <Navbar.Collapse id='basic-navbar-nav'>
                   <Nav className='me-auto'>
-                      <Nav.Link
-                          className="nav-link"
-                          as={Link}
-                          href='/dashboard'
-                      >
-                          <a className="nav-link">Dashboard</a>
-                      </Nav.Link>
                       <Nav.Link
                           className="nav-link"
                           as={Link}
