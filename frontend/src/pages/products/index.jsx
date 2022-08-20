@@ -32,7 +32,7 @@ export default function Products({products}){
          <title>Produtos</title>
     </Head>
       <Wrapper>
-          <Link href='/'>
+          <Link href='/products/createProduct'>
             <Button variant='outline-success mt-4' >
                 Novo Produto
             </Button>
@@ -51,6 +51,7 @@ export default function Products({products}){
                     <th scope='col'>Nome</th>
                     <th scope='col'>Descrição</th>
                     <th scope='col'>Preço</th>
+                    <th scope='col'>Imagem</th>
                     <th scope='col'>Categoria</th>
                     <th scope='col'>Opções</th>
                 </tr>
@@ -61,7 +62,7 @@ export default function Products({products}){
                     return produto
                 } else if (produto.name.toLowerCase().includes(termoBusca.toLowerCase())) {
                     return produto
-                }
+                } 
                })
                .map(produto => (
                     <tr key={produto.id}>
@@ -69,6 +70,7 @@ export default function Products({products}){
                         <td>{produto.name}</td>
                         <td>{produto.description}</td>
                         <td>{produto.price}</td>
+                        <td><img src={`http://localhost:3333/files/${produto.banner}`} width="50" height="50" /></td>
                         <td>{produto.category.name}</td>
                         <td>
                             <div>
