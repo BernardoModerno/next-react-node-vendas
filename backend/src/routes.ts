@@ -29,6 +29,7 @@ import uploadConfig from './config/multer'
 import { ListByIdCategoryController } from './controllers/category/ListByIdCategoryController';
 import { DeleteCategoryController } from './controllers/category/DeleteCategoryController';
 import { ListProductController } from './controllers/product/ListProductController';
+import { EditProductController } from './controllers/product/EditProductController';
 
 
 const router = Router();
@@ -59,6 +60,9 @@ router.post('/product', isAuthenticated, upload.single('file'), new CreateProduc
 router.get('/category/product', isAuthenticated, new ListByCategoryController().handle )
 
 router.get('/product', isAuthenticated, new ListProductController().handle )
+
+router.put('/product/:id', isAuthenticated, upload.single('file'), new EditProductController().handle )
+
 
 //-- ROTAS ORDER
 router.post('/order', isAuthenticated, new CreateOrderController().handle )
