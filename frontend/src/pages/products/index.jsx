@@ -25,6 +25,15 @@ export default function Products({products}){
       
     loadProducts()
 }, [])
+  
+async function del (id) {
+    if (window.confirm('Você realmente deseja excluir esse produto?')) {
+        const apiClient = setupAPIClient();
+        await apiClient.delete(`product/${id}`);
+
+        setProductList(productList.filter(produto => produto.id !== id));
+    }
+  }
 
    return (
     <>
