@@ -76,7 +76,7 @@ export default function Products({products}){
                             <div>
                                    <Button
                                        variant='btn btn-sm btn-outline-primary me-2'
-                                       onClick={() => router.push("/" + produto.id)}
+                                       onClick={() => router.push("/products/editProduct/" + produto.id)}
                                    >
                                        Editar
                                    </Button>

@@ -30,6 +30,7 @@ import { ListByIdCategoryController } from './controllers/category/ListByIdCateg
 import { DeleteCategoryController } from './controllers/category/DeleteCategoryController';
 import { ListProductController } from './controllers/product/ListProductController';
 import { EditProductController } from './controllers/product/EditProductController';
+import { ListByIdProductController } from './controllers/product/ListByIdProductController';
 
 
 const router = Router();
@@ -62,6 +63,8 @@ router.get('/category/product', isAuthenticated, new ListByCategoryController().
 router.get('/product', isAuthenticated, new ListProductController().handle )
 
 router.put('/product/:id', isAuthenticated, upload.single('file'), new EditProductController().handle )
+
+router.get('/product/:id', isAuthenticated, new ListByIdProductController().handle )
 
 
 //-- ROTAS ORDER
