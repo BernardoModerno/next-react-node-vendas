@@ -1,4 +1,3 @@
-import { Menu } from '../menu'
 import { NavSup } from '../navsup'
 
 export function Wrapper(props) {
@@ -8,8 +7,7 @@ export function Wrapper(props) {
         <NavSup />
           <div className="container-fluid">
            <div className="row">
-             <Menu/>
-             <main className="col-md-9 ms-sm-auto col-lg-11 px-md-4">
+             <main className="col-md-12 ms-sm-auto col-lg-12 px-md-2">
                 {props.children}
              </main>
            </div>
